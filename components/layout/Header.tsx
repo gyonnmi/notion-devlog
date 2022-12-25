@@ -4,11 +4,18 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
     <>
       <header className="sticky top-0 bg-white/40 backdrop-blur-md z-50">
         <div className="p-4 flex flex-row justify-between max-w-2xl mx-auto">
-          <button className="p-1 hover:bg-gray-200 rounded-lg">
+          <button
+            className="p-1 hover:bg-gray-200 rounded-lg"
+            onClick={() => {
+              setIsMenuOpen(true);
+            }}
+          >
             <span>
               <AiOutlineMenu size="2rem" />
             </span>
@@ -25,7 +32,7 @@ const Header = () => {
           </button>
         </div>
       </header>
-      <HeaderMenu />
+      <HeaderMenu isMenuOpen={isMenuOpen} />
     </>
   );
 };
