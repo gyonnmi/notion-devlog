@@ -1,10 +1,22 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import HeaderMenu from "./HeaderMenu";
+import Backdrop from "./Backdrop";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { pathname } = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.className = isMenuOpen ? "isMenuOpen" : "";
+  }, [isMenuOpen]);
+
+  // 페이지 이동 시 메뉴 닫기
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -33,6 +45,7 @@ const Header = () => {
         </div>
       </header>
       <HeaderMenu isMenuOpen={isMenuOpen} />
+      {isMenuOpen ? <Backdrop onClick={() => setIsMenuOpen(false)} /> : null}
     </>
   );
 };
