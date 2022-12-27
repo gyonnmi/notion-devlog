@@ -18,7 +18,7 @@ const Home = ({ data }: HomeProps) => {
       <PageHead />
       <HeroSection />
 
-      <section className="m-4">
+      <section className="m-4 min-h-[50vh] max-w-4xl mx-auto">
         <CardList data={data} />
       </section>
     </>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { CardData } from "types/types";
 import IconRenderer from "./IconRenderer";
+import TagList from "./tags/TagList";
 
 interface CardItemProps {
   data: CardData;
@@ -13,14 +14,20 @@ const CardItem = ({ data }: CardItemProps) => {
 
   return (
     <li>
-      <article>
+      <article className="group">
         <Link href={`/blog/${id}`}>
           <a>
             <div className="relative pt-[64%] rounded-lg overflow-hidden mb-4">
-              <Image src={cover} alt={title} layout="fill" objectFit="cover" />
+              <Image
+                src={cover}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+                className="group-hover:scale-110 transition-all duration-300"
+              />
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="text-2xl font-bold">
+              <h2 className="text-2xl font-bold group-hover:text-red-400">
                 <IconRenderer icon={icon} />
                 {title}
               </h2>
@@ -31,7 +38,9 @@ const CardItem = ({ data }: CardItemProps) => {
             </div>
           </a>
         </Link>
-        <div>tags</div>
+        <div className="mt-2">
+          <TagList tags={tags} />
+        </div>
       </article>
     </li>
   );
