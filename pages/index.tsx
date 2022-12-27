@@ -74,9 +74,9 @@ const Home = ({ data }: HomeProps) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const databaseId = process.env.NOTION_DATABASE_ID;
+  const databaseId = process.env.DATABASE_ID;
 
-  if (!databaseId) throw new Error("NOTION_DATABASE_ID is not defined");
+  if (!databaseId) throw new Error("DATABASE_ID is not defined");
 
   const databaseItems = await getDatabaseItems(databaseId);
 

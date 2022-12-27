@@ -20,7 +20,7 @@ export const getDatabaseItems = async (databaseId: string) => {
         equals: true,
       },
     },
-    //
+    // Published 속성을 기준으로 내림차순 정렬
     sorts: [
       {
         property: propertyTable.Published,
