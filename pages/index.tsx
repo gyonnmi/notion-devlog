@@ -1,9 +1,16 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import type { GetStaticProps } from "next";
 import Image from "next/image";
+import { getDatabaseItems } from "../cms/notion";
 import PageHead from "../components/common/PageHead";
 import styles from "../styles/Home.module.css";
-const Home: NextPage = () => {
+import { CardData } from "../types/types";
+import { parseDatabaseItems } from "../utils/parseDatabaseItems";
+
+interface HomeProps {
+  data: CardData[];
+}
+
+const Home = ({ data }: HomeProps) => {
   return (
     <>
       <PageHead />
@@ -65,3 +72,19 @@ const Home: NextPage = () => {
   );
 };
 export default Home;
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const databaseId = process.env.NOTION_DATABASE_ID;
+
+  if (!databaseId) throw new Error("NOTION_DATABASE_ID is not defined");
+
+  const databaseItems = await getDatabaseItems(databaseId);
+
+  const parsedData = parseDatabaseItems(databaseItems);
+
+  return {
+    props: {
+      data: parsedData,
+    },
+  };
+};
