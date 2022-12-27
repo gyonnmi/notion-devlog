@@ -10,7 +10,7 @@ const TagItem = ({ name, color }: TagItemProps) => {
   return (
     <li>
       <button
-        className="rounded-xl border px-2 py-1 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+        className="text-sm rounded-xl border px-2 py-1 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
         style={{
           backgroundColor: COLOR_TABLE[color],
         }}
