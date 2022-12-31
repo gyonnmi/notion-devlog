@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section>
       <motion.div
-        className="py-16 md:py-36 bg-[length:100%_55%] bg-no-repeat px-4 flex justify-center items-center bg-gradient-to-r from-purple-500 to-blue-500"
+        className="py-16 md:py-36 bg-[length:100%_55%] bg-no-repeat px-4 flex justify-center items-center bg-gradient-to-r from-purple-300 to-blue-300"
         initial={{
           backgroundSize: "100% 100%",
         }}

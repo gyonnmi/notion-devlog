@@ -17,7 +17,6 @@ interface HomeProps {
 }
 
 const Home = ({ data, allTags }: HomeProps) => {
-  console.log("allTags" + allTags);
 
   return (
     <>

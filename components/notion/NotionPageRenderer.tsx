@@ -34,7 +34,6 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         Code,
         Collection,
         Equation,
-        Link,
         Image,
         propertyDateValue: (dateProperty) =>
           dateProperty.data[0][1][0][1].start_date,
