@@ -1,10 +1,9 @@
-import { ExtendedRecordMap } from "notion-types";
 import React from "react";
+import { ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-
-import dynamic from "next/dynamic";
 import TagItem from "components/card/tags/TagItem";
 
 const Code = dynamic(() =>
@@ -34,6 +33,7 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         Code,
         Collection,
         Equation,
+        Link,
         Image,
         propertyDateValue: (dateProperty) =>
           dateProperty.data[0][1][0][1].start_date,

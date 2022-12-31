@@ -18,7 +18,9 @@ const BlogDetailPage = ({ recordMap }: BlogDetailPageProps) => {
 
 export default BlogDetailPage;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<BlogDetailPageProps> = async ({
+  params,
+}) => {
   const pageId = params?.pageId;
 
   if (!pageId) throw new Error("pageId is not defined");
@@ -29,6 +31,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       recordMap,
     },
+    revalidate: 60,
   };
 };
 

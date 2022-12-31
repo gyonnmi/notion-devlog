@@ -17,7 +17,6 @@ interface HomeProps {
 }
 
 const Home = ({ data, allTags }: HomeProps) => {
-
   return (
     <>
       <PageHead />
@@ -56,5 +55,6 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       data: parsedData,
       allTags,
     },
+    revalidate: 60,
   };
 };
