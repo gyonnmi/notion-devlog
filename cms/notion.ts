@@ -4,6 +4,7 @@ import { NotionAPI } from "notion-client";
 export const propertyTable = {
   Public: "Public",
   Published: "Published",
+  Tags: "Tags",
 };
 
 // Initializing a client
@@ -11,15 +12,32 @@ export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getDatabaseItems = async (databaseId: string) => {
+export interface DatabaseQueryOption {
+  tagName?: string;
+}
+
+export const getDatabaseItems = async (
+  databaseId: string,
+  option?: DatabaseQueryOption
+) => {
   const databaseItems = await notion.databases.query({
     database_id: databaseId,
     // Public 속성이 true인 페이지만 가져오기
     filter: {
-      property: "Public",
-      checkbox: {
-        equals: true,
-      },
+      and: [
+        {
+          property: propertyTable.Public,
+          checkbox: {
+            equals: true,
+          },
+        },
+        {
+          property: propertyTable.Tags,
+          multi_select: {
+            contains: option?.tagName ?? "",
+          },
+        },
+      ],
     },
     // Published 속성을 기준으로 내림차순 정렬
     sorts: [

@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  title?: string;
+  description?: string;
+}
+
+const HeroSection = ({
+  // 기본값 설정
+  title = "Hello, World!",
+  description = "",
+}: HeroSectionProps) => {
   return (
     <section>
       <motion.div
@@ -29,8 +38,9 @@ const HeroSection = () => {
           }}
         >
           <h1 className="font-black text-5xl mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Hello, World!
+            {title}
           </h1>
+          <p>{description}</p>
         </motion.div>
       </motion.div>
     </section>
