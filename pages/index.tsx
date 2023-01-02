@@ -30,7 +30,9 @@ const Home = ({ data, allTags }: HomeProps) => {
           </div>
         </aside>
         <div className="flex-grow">
-          <h3 className="font-bold text-4xl mb-4">Devlog</h3>
+          <h3 className="font-bold text-2xl mb-4 bg-gradient-to-b from-gray-400 to-gray-500 bg-clip-text text-transparent">
+            Devlog
+          </h3>
           <CardList data={data} />
         </div>
       </section>
