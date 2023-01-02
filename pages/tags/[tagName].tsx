@@ -10,6 +10,7 @@ import React from "react";
 import { CardData } from "types/types";
 import { getAlltags } from "utils/getAllTags";
 import { parseDatabaseItems } from "utils/parseDatabaseItems";
+import { insertPreviewImage } from "utils/previewImage";
 
 interface TagNameProps {
   data: CardData[];
@@ -65,12 +66,13 @@ export const getStaticProps: GetStaticProps<TagNameProps> = async ({
   const databaseItems = await getDatabaseItems(databaseId, { tagName });
 
   const parsedData = parseDatabaseItems(databaseItems);
+  const dataWithPreview = await insertPreviewImage(parsedData);
 
   const allTags = getAlltags(parsedData);
 
   return {
     props: {
-      data: parsedData,
+      data: dataWithPreview,
       allTags,
       tagName,
     },

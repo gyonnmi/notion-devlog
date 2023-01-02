@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { ExtendedRecordMap } from "notion-types";
 import React from "react";
+import { insertPreviewImageToRecordMap } from "utils/previewImage";
 
 interface BlogDetailPageProps {
   recordMap: ExtendedRecordMap;
@@ -38,9 +39,11 @@ export const getStaticProps: GetStaticProps<BlogDetailPageProps> = async ({
 
   const recordMap = await getPageContent(pageId.toString());
 
+  const preview_images = await insertPreviewImageToRecordMap(recordMap);
+
   return {
     props: {
-      recordMap,
+      recordMap: { ...recordMap, preview_images },
     },
     revalidate: 60,
   };
