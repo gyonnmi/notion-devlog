@@ -1,6 +1,10 @@
 import TagList from "components/card/tags/TagList";
+import Pagination from "components/common/Pagination";
+import { POSTS_PER_PAGE } from "const/const";
 import type { GetStaticProps } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { getAlltags } from "utils/getAllTags";
 
 import { getDatabaseItems } from "../cms/notion";
@@ -17,6 +21,22 @@ interface HomeProps {
 }
 
 const Home = ({ data, allTags }: HomeProps) => {
+  const { query } = useRouter();
+  const currentPage = query.page ? parseInt(query.page.toString()) : 1;
+
+  const [postData, setPostData] = useState(
+    data.slice(POSTS_PER_PAGE * (currentPage - 1), POSTS_PER_PAGE * currentPage)
+  );
+
+  useEffect(() => {
+    setPostData(
+      data.slice(
+        POSTS_PER_PAGE * (currentPage - 1),
+        POSTS_PER_PAGE * currentPage
+      )
+    );
+  }, [currentPage, data]);
+
   return (
     <>
       <PageHead />
@@ -33,7 +53,10 @@ const Home = ({ data, allTags }: HomeProps) => {
           <h3 className="font-bold text-2xl mb-4 bg-gradient-to-b from-gray-400 to-gray-500 bg-clip-text text-transparent">
             Devlog
           </h3>
-          <CardList data={data} />
+          <CardList data={postData} />
+          <div className="my-4 flex justify-center">
+            <Pagination current={currentPage} total={data.length} />
+          </div>
         </div>
       </section>
     </>
@@ -52,9 +75,15 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   const allTags = getAlltags(parsedData);
 
+  const duplicatedData: CardData[] = [];
+
+  for (let i = 0; i < 20; i++) {
+    duplicatedData.push(...parsedData);
+  }
+
   return {
     props: {
-      data: parsedData,
+      data: duplicatedData,
       allTags,
     },
     revalidate: 60,
