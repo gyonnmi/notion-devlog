@@ -2,16 +2,14 @@ import TagList from "components/card/tags/TagList";
 import Pagination from "components/common/Pagination";
 import { POSTS_PER_PAGE } from "const/const";
 import type { GetStaticProps } from "next";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getAlltags } from "utils/getAllTags";
-
+import { insertPreviewImage } from "utils/previewImage";
 import { getDatabaseItems } from "../cms/notion";
 import CardList from "../components/card/CardList";
 import PageHead from "../components/common/PageHead";
 import HeroSection from "../components/Intro/HeroSection";
-import styles from "../styles/Home.module.css";
 import { CardData } from "../types/types";
 import { parseDatabaseItems } from "../utils/parseDatabaseItems";
 
@@ -73,17 +71,19 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
   const parsedData = parseDatabaseItems(databaseItems);
 
+  const dataWithPreview = await insertPreviewImage(parsedData);
+
   const allTags = getAlltags(parsedData);
 
   const duplicatedData: CardData[] = [];
 
   for (let i = 0; i < 20; i++) {
-    duplicatedData.push(...parsedData);
+    duplicatedData.push(...dataWithPreview);
   }
 
   return {
     props: {
-      data: duplicatedData,
+      data: dataWithPreview,
       allTags,
     },
     revalidate: 60,
