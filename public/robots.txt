@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rizy.dev
+
+# Sitemaps
+Sitemap: https://rizy.dev/sitemap.xml
