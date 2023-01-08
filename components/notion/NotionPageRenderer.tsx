@@ -1,6 +1,6 @@
 import React from "react";
 import { ExtendedRecordMap } from "notion-types";
-import { NotionRenderer } from "react-notion-x";
+import { defaultMapImageUrl, NotionRenderer } from "react-notion-x";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
@@ -39,6 +39,7 @@ const NotionPageRenderer = ({
       disableHeader={true}
       showTableOfContents={true}
       previewImages={!!recordMap?.preview_images}
+      mapImageUrl={(url, block) => defaultMapImageUrl(url, block) ?? url}
       components={{
         Code,
         Collection,

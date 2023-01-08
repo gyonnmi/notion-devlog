@@ -1,3 +1,4 @@
+import Giscus from "@giscus/react";
 import { getPageContent } from "cms/notion";
 import LoadingSpiner from "components/common/LoadingSpiner";
 import NotionPageRenderer from "components/notion/NotionPageRenderer";
@@ -25,6 +26,24 @@ const BlogDetailPage = ({ recordMap }: BlogDetailPageProps) => {
   return (
     <section>
       <NotionPageRenderer recordMap={recordMap} />
+      <div className="max-w-4xl mx-auto my-8">
+        <Giscus
+          id="comments"
+          term="blog"
+          repo="gyonnmi/notion-devlog"
+          repoId="R_kgDOIp4nGQ"
+          category="General"
+          categoryId="DIC_kwDOIp4nGc4CTeC-"
+          mapping="pathname"
+          strict="0"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="light"
+          lang="ko"
+          loading="lazy"
+        />
+      </div>
     </section>
   );
 };
