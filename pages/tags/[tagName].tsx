@@ -39,7 +39,7 @@ const TagNamePage = ({ data, allTags, tagName }: TagNameProps) => {
       <section className="m-4 min-h-[50vh] max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-8 px-4">
         <aside>
           <div className="p-4 rounded-xl border shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Tags</h2>
+            <h2 className="text-2xl font-bold mb-4 text-purple-500">Tags</h2>
             <TagList tags={allTags} />
           </div>
         </aside>

@@ -27,7 +27,9 @@ const TagIndexPage = ({ data, allTags }: TagIndexPageProps) => {
         >
           <aside className="basis-[25%]">
             <div className="p-4 rounded-xl border shadow-md">
-              <h2 className="text-2xl font-bold mb-4">Tags</h2>
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-b from-gray-400 to-gray-500 bg-clip-text text-transparent">
+                Tags
+              </h2>
               <TagList tags={getAlltags(data[name])} />
             </div>
           </aside>

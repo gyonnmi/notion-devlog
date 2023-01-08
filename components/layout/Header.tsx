@@ -29,7 +29,7 @@ const Header = () => {
       <header className="sticky top-0 bg-white/40 backdrop-blur-md z-50">
         <div className="p-4 flex flex-row justify-between max-w-2xl mx-auto">
           <button
-            className="p-1 hover:bg-gray-200 rounded-lg"
+            className="p-1 hover:bg-gray-200 rounded-lg text-pink-400"
             onClick={() => {
               setIsMenuOpen(true);
             }}
@@ -39,11 +39,11 @@ const Header = () => {
             </span>
           </button>
           <Link href={"/"}>
-            <h1 className="font-bold text-2xl cursor-pointer select-none">
-              Rizy&apos;s devlog
+            <h1 className="font-bold text-2xl cursor-pointer select-none bg-gradient-to-b from-purple-500 to-blue-300 bg-clip-text text-transparent">
+              Rizy&apos;s Devlog
             </h1>
           </Link>
-          <button className="p-1 hover:bg-gray-200 rounded-lg">
+          <button className="p-1 hover:bg-gray-200 rounded-lg text-pink-400">
             <Link href={`/search`}>
               <span>
                 <AiOutlineSearch size="2rem" />
