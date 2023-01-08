@@ -38,7 +38,11 @@ const Footer = () => {
               </a>
             </li>
             <li className="hover:bg-white/20 rounded-lg">
-              <a href="https://www.rizy.dev/" target="_blank" rel="noreferrer">
+              <a
+                href="https://blog.naver.com/km_713"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span>
                   <AiOutlineBold size="2rem" />
                 </span>

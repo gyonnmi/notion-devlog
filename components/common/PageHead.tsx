@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const DEFAULT_TITLE = `Rizy's devlog ٩(๑′∀ ‵๑)۶•*¨*•.¸¸♪`;
-const DEFAULT_DESCRIPTION = "풀스택 개발자를 목표로 공부하고 있습니다🐣";
+const DEFAULT_DESCRIPTION = "Web Developer🐣";
 const DEFAULT_OG_IMAGE_SRC = "/api/og";
 
 interface PageHeadProps {

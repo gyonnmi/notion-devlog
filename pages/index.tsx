@@ -43,7 +43,9 @@ const Home = ({ data, allTags }: HomeProps) => {
       <section className="m-4 min-h-[50vh] max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-8 px-4">
         <aside className="basis-[25%]">
           <div className="p-4 rounded-xl border shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Tags</h2>
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-b from-gray-400 to-gray-500 bg-clip-text text-transparent">
+              Tags
+            </h2>
             <TagList tags={allTags} />
           </div>
         </aside>
