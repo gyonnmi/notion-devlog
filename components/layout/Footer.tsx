@@ -39,7 +39,7 @@ const Footer = () => {
             </li>
             <li className="hover:bg-white/20 rounded-lg">
               <a
-                href="https://blog.naver.com/km_713"
+                href="https://km713.tistory.com/"
                 target="_blank"
                 rel="noreferrer"
               >
